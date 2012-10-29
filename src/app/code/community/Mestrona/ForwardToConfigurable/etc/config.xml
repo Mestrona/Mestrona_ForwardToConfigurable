@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mestrona_ForwardToConfigurable>
+            <version>0.9.0</version>
+        </Mestrona_ForwardToConfigurable>
+    </modules>
+    <global>
+        <models>
+            <mestrona_forwardtoconfigurable>
+                <class>Mestrona_ForwardToConfigurable_Model</class>
+            </mestrona_forwardtoconfigurable>
+        </models>
+        <helpers>
+            <mestrona_forwardtoconfigurable>
+                <class>Mestrona_ForwardToConfigurable_Helper</class>
+            </mestrona_forwardtoconfigurable>
+        </helpers>
+    </global>
+    <frontend>
+        <events>
+            <controller_action_predispatch_catalog_product_view>
+                <observers>
+                    <mestrona_forwardtoconfigurable>
+                        <type>model</type>
+                        <class>mestrona_forwardtoconfigurable/observer</class>
+                        <method>forwardToConfigurable</method>
+                    </mestrona_forwardtoconfigurable>
+                </observers>
+            </controller_action_predispatch_catalog_product_view>
+        </events>
+    </frontend>
+</config>

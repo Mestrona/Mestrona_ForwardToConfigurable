@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mestrona_ForwardToConfigurable>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends></depends>
+        </Mestrona_ForwardToConfigurable>
+    </modules>
+</config>
