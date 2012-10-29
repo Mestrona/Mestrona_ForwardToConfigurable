@@ -79,14 +79,20 @@ class Mestrona_ForwardToConfigurable_Model_Observer extends Mage_Core_Model_Abst
         $params->setCategoryId(false);
         $params->setConfigureMode(true);
         $buyRequest = new Varien_Object();
-        $buyRequest->setSuperAttribute($this->generateConfigData($parentProduct, $currentProduct)); //array(525 => "99"));
+        $buyRequest->setSuperAttribute($this->generateConfigData($parentProduct, $currentProduct)); // example format: array(525 => "99"));
         $params->setBuyRequest($buyRequest);
 
         /* @var $productViewHelper Mage_Catalog_Helper_Product_View */
         $productViewHelper = Mage::helper('catalog/product_view');
-        $productViewHelper->prepareAndRender($parentId, $controller, $params);
 
         $controller->getRequest()->setDispatched(true);
+
+        // avoid double dispatching
+        // @see Mage_Core_Controller_Varien_Action::dispatch()
+        $controller->setFlag('', Mage_Core_Controller_Front_Action::FLAG_NO_DISPATCH, true);
+
+
+        $productViewHelper->prepareAndRender($parentId, $controller, $params);
     }
 
 }
