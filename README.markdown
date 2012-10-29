@@ -9,6 +9,8 @@ Facts
 - version: 0.0.9
 - extension key: Mestrona_ForwardToConfigurable
 - [extension on GitHub](https://github.com/company/Company_ExampleExtension)
+- [download as ZIP](https://github.com/amenk/Mestrona_ForwardToConfigurable/zipball/master)
+- [download as .TAR.GZ](https://github.com/amenk/Mestrona_ForwardToConfigurable/tarball/master)
 
 Description
 -----------
