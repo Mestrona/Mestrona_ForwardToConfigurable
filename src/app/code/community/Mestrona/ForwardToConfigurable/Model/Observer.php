@@ -86,7 +86,6 @@ class Mestrona_ForwardToConfigurable_Model_Observer extends Mage_Core_Model_Abst
         $productViewHelper = Mage::helper('catalog/product_view');
 
         $controller->getRequest()->setDispatched(true);
-
         // avoid double dispatching
         // @see Mage_Core_Controller_Varien_Action::dispatch()
         $controller->setFlag('', Mage_Core_Controller_Front_Action::FLAG_NO_DISPATCH, true);

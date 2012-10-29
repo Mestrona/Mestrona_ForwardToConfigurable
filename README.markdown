@@ -1,8 +1,7 @@
 Mestrona ForwardToConfigurable
 =====================
-When opening a simple product that is assigned to a configurable product,
-the configurable product is displayed with the according options preselected.
 
+Forward from simple product to configurable one and preselect options.
 
 Facts
 -----
@@ -14,7 +13,11 @@ Facts
 
 Description
 -----------
-This paragraph describes what the extension does.
+
+When opening a simple product that is assigned to a configurable product,
+the configurable product is displayed with the according options preselected.
+
+*Warning*: This can lead to duplicate content problems as all the simple products lead an almost identical page.
 
 Requirements
 ------------
@@ -33,6 +36,8 @@ Installation Instructions
 3. There is currently now configuration neccessary or possible. Th
  extension is automatically active for all simple products that belong
  to a configurable product.
+4. Configure some simple products that are assigned to a configurable product
+ to be visible in the catalog / search.
 
 You can also use modman for installation.
 
@@ -44,7 +49,9 @@ If you have any issues with this extension, open an issue on [GitHub](https://gi
 
 Contribution
 ------------
-Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://github.com/amenk/Mestrona_ForwardToConfigurable/issues).
+
+Any contribution is highly appreciated. The best way to contribute code is to open a
+[pull request on GitHub](https://github.com/amenk/Mestrona_ForwardToConfigurable/issues).
 
 Developer
 ---------
