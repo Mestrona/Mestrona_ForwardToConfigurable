@@ -82,6 +82,11 @@ class Mestrona_ForwardToConfigurable_Model_Observer extends Mage_Core_Model_Abst
         $buyRequest->setSuperAttribute($this->generateConfigData($parentProduct, $currentProduct)); // example format: array(525 => "99"));
         $params->setBuyRequest($buyRequest);
 
+        // override visibility setting of configurable product
+        // in case only simple products should be visible in the catalog
+        // TODO: make this behaviour configurable
+        $params->setOverrideVisibility(true);
+
         /* @var $productViewHelper Mage_Catalog_Helper_Product_View */
         $productViewHelper = Mage::helper('catalog/product_view');
 
