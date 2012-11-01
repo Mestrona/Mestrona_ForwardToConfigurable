@@ -59,19 +59,33 @@ class Mestrona_ForwardToConfigurable_Model_Observer extends Mage_Core_Model_Abst
         if (empty($parentIds)) { // does not have a parent -> nothing to do
             return;
         }
-        $parentId = array_shift($parentIds);
+
+        while (count($parentIds) > 0) {
+            $parentId = array_shift($parentIds);
+            /* @var $parentProduct Mage_Catalog_Model_Product */
+            $parentProduct = Mage::getModel('catalog/product');
+            $parentProduct->load($parentId);
+            if (!$parentProduct->getId()) {
+                throw new Exception(sprintf('Can not load parent product with ID %d', $parentId));
+            }
+
+            if ($parentProduct->isVisibleInCatalog()) {
+                break;
+            }
+            // try to find other products if one parent product is not visible -> loop
+        }
+
+        if (!$parentProduct->isVisibleInCatalog()) {
+            Mage::log(sprintf('Not enabled parent for product id %d found.', $productId), Zend_Log::WARN);
+            return;
+        }
+
         if (!empty($parentIds)) {
-            Mage::log(sprintf('Product with id %d has more than one parent. Choosing first.', $productId), Zend_Log::WARN);
+            Mage::log(sprintf('Product with id %d has more than one enabled parent. Choosing first.', $productId), Zend_Log::NOTICE);
         }
 
-        /* @var $parentProduct Mage_Catalog_Model_Product */
-        $parentProduct = Mage::getModel('catalog/product');
-        $parentProduct->load($parentId);
-        if (!$parentProduct->getId()) {
-            throw new Exception(sprintf('Can not load parent product with ID %d', $parentId));
-        }
 
-        /* @var $currentProduct Mage_Catalog_Model_Product */
+            /* @var $currentProduct Mage_Catalog_Model_Product */
         $currentProduct = Mage::getModel('catalog/product');
         $currentProduct->load($productId);
 

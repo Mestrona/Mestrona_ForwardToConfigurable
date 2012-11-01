@@ -41,6 +41,10 @@ class Mestrona_ForwardToConfigurable_Helper_Catalog_Product extends Mage_Catalog
             if (!$this->canShow($product)) {
                 return false;
             }
+        } else {
+            if (!$product->isVisibleInCatalog()) {
+                return false;
+            }
         }
         // [Mestrona END]
 
