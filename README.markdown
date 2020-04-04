@@ -3,6 +3,8 @@ Mestrona ForwardToConfigurable
 
 Forward from simple product to configurable one and preselect options.
 
+See also [Magento 2 Version bei iMi digital](https://github.com/iMi-digital/magento2-ForwardToConfigurable).
+
 Facts
 -----
 - version: 0.9.1
